@@ -7,6 +7,13 @@ import (
 )
 
 func main() {
+	IntegerTypeMaxAndMinValuePrint()
+	ImpliciteDefaultIntType()
+	IntegerExpression()
+	IntegerTypeCasting()
+}
+
+func IntegerTypeMaxAndMinValuePrint() {
 	var int8Min int8 = math.MinInt8
 	var int16Min int16 = math.MinInt16
 	var int32Min int32 = math.MinInt32
@@ -33,6 +40,36 @@ func main() {
 	var expliciteIntMax int = math.MaxInt
 	fmt.Printf("explicite int Min Value: %d, type: %T\n", explicateIntMin, explicateIntMin)
 	fmt.Printf("explicite int Max Value: %d, type: %T\n", expliciteIntMax, expliciteIntMax)
+}
 
-	fmt.Println(reflect.TypeOf(1))
+func ImpliciteDefaultIntType() {
+	fmt.Println("===================================================")
+	fmt.Printf("reflect.TypeOf(1) => %v\n", reflect.TypeOf(1))
+	fmt.Println("===================================================")
+}
+
+func IntegerExpression() {
+	fmt.Printf("00001111 => %d\n", 00001111) // 2진수는 안됌 앞에 0이 붙기 때문에 8진수의 결과로 나옴
+	fmt.Printf("15 => %d\n", 15)
+	fmt.Printf("017 => %d\n", 017)
+	fmt.Printf("0xF => %d\n", 0xF)
+	fmt.Printf("0xf => %d\n", 0xf)
+	fmt.Println("===================================================")
+}
+
+func IntegerTypeCasting() {
+	var i8 int8 = 1
+	var i16 int16 = int16(i8)
+	var i32 int32 = int32(i16)
+	var i64 int64 = int64(i32)
+	var i int = int(i8)
+
+	fmt.Printf("i := 1 => %T\n", i) // 2진수는 안됌 앞에 0이 붙기 때문에 8진수의 결과로 나옴
+	fmt.Printf("int8(i) => %T\n", int8(i))
+	fmt.Printf("int16(i) => %T\n", int16(i))
+	fmt.Printf("int32(i) => %T\n", int32(i))
+	fmt.Printf("int64(i) => %T\n", int64(i))
+	fmt.Println("===================================================")
+
+	fmt.Println(i8, i16, i32, i64)
 }
