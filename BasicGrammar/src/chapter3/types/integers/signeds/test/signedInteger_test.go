@@ -1,7 +1,6 @@
 package signedInteger
 
 import (
-	"math"
 	"testing"
 )
 
