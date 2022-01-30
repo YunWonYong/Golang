@@ -18,7 +18,7 @@ func Int8ToBinaryCode(num int) (n int8, binaryCode string) {
 	binaryCode = strconv.FormatInt(int64(num), 2)
 	binaryCode = fmt.Sprintf("%08s", binaryCode)
 	n = int8(num)
-	return n, binaryCode
+	return
 }
 
 func TwoNumberAdditionCarryPrint(left, right string) {
@@ -31,7 +31,7 @@ right:       %v
 ==================================`, leftArr, rightArr)
 	rightBit := ""
 	leftBit := ""
-	carryStr := strings.Split(" ________", "");
+	carryStrArr := strings.Split(" ________", "");
 	carryFlag := false
 	carryRuleNumber := 0
 	index := len(leftArr) - 1
@@ -43,18 +43,15 @@ right:       %v
 		switch carryRuleNumber {
 		case 4:
 			carryFlag = true
-			carryStr[index + 1] = "C"
 			rightArr[index] = "0"
 			leftArr[index] = "0"
 		case 8:
 			fallthrough
 		case 6:
 			carryFlag = true
-			carryStr[index + 1] = "C"
 			leftArr[index] = "0"	
 		case 7:
 			carryFlag = true
-			carryStr[index + 1] = "C"
 			rightArr[index] = "0"
 		case 5:
 			leftArr[index] = "1"
@@ -66,20 +63,24 @@ right:       %v
 		case 3:
 			carryFlag = false
 		}
+
+		if carryFlag {
+			carryStrArr[index] = "C"
+		}
+
 		fmt.Printf(`
        %d번 째 Bit
 carryflag: %t
 carry:     %v
 left:        %v
 right:       %v       %d번 규칙
-==================================`, count, carryFlag, carryStr, leftArr, rightArr, carryRuleNumber)
+==================================`, count, carryFlag, carryStrArr, leftArr, rightArr, carryRuleNumber)
 		count++
-		carryStr[index + 1] = "_"
+		carryStrArr[index] = "_"
 	}
 }
 
-func GetCarryRule(flag bool, left, right string) int {
-	ruleNum := 0
+func GetCarryRule(flag bool, left, right string) (ruleNum int) {
 	switch {
 	case flag == false && left == "0" && right == "0":
 		ruleNum = 1
@@ -98,5 +99,5 @@ func GetCarryRule(flag bool, left, right string) int {
 	case flag == true && left == "1" && right == "1":		
 		ruleNum = 8
 	}
-	return ruleNum
+	return
 }
