@@ -7,7 +7,9 @@ func main() {
 }
 
 func ArrayDeclaration() {
-	var a []int = []int{1, 2, 3, 4, 5}
+	//var a [5]int = [5]int{1, 2, 3, 4, 5}
+
+	var a [5]int = [...]int{1, 2, 3, 4, 5}
 	fmt.Println(a)
 	var d [5]int8
 	d[0] = 1
@@ -26,30 +28,35 @@ func ArrayDeclaration() {
 	fmt.Println(f)
 
 	e := [5]int{1, 2, 3, 4, 5}
-	g := []int{1, 2, 3}
 	h := [...]int{1, 2, 3}
 	i := [5]int{}
-	j := []int{} // 의미없는 코드와 같음...
 	fmt.Println(e)
-	fmt.Println(g)
 	fmt.Println(h)
 	fmt.Println(i)
-	fmt.Println(j)
 
-	//j[0] = 1 error
+	//j := []int{}
+	//j[0] = 1 // error
 
-	x := []int8{1, 2, 3}
+	x := [3]int8{1, 2, 3}
+	//x[0] = 128 // error
 
-	//x[0] = 128 error
-
-	y := []int16{1, 2, 3}
-	//x = y error
-	//y = x error
+	y := [3]int16{1, 2, 3}
+	//x = y // error
+	//y = x // error
 
 	fmt.Println(x, y)
 
 	z := x
-	fmt.Printf("z변수의 0번 째 인덱스의 값을 대입하기 전 x: %v z: %v\n", x, z)
+	fmt.Printf(`
+ x variable momey address => %p, elements => %#v
+ z variable momey address => %p, elements => %#v
+ `, &x, x, &z, z)
+
 	z[0] = 10
-	fmt.Printf("z변수의 0번 째 인덱스의 값을 대입한 후 x: %v z: %v\n", x, z)
+	z[1] = 20
+	z[2] = 30
+	fmt.Printf(`
+ x variable momey address => %p, elements => %#v
+ z variable momey address => %p, elements => %#v
+ `, &x, x, &z, z)
 }
