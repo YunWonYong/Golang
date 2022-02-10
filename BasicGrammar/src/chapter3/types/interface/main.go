@@ -38,6 +38,11 @@ func main() {
 	fmt.Println(x)
 
 	x = nil
+
 	//z := nil
 
+	var z interface{} = nil
+	fmt.Printf(`
+ z variable type => %T
+ `, z)
 }
