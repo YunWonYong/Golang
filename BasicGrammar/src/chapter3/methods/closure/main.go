@@ -17,6 +17,13 @@ func main() {
 		n--
 	}
 	fmt.Println(answer)
+
+	// f = later() // 타입이 같지 않아 대입 불가
+	f2 := later()
+	fmt.Print(f2("Hello"))
+	fmt.Print(f2(" "))
+	fmt.Print(f2("world"))
+	fmt.Println(f2(" "))
 }
 
 func InfinityLoop(str string) func() string {
@@ -28,6 +35,15 @@ func InfinityLoop(str string) func() string {
 		}
 		el = string(arr[index])
 		index++
+		return
+	}
+}
+
+func later() func(string) string {
+	store := ""
+	return func(next string) (s string) {
+		s = store
+		store = next
 		return
 	}
 }
