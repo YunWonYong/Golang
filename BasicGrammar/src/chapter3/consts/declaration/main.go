@@ -11,4 +11,39 @@ func main() {
 	fmt.Println(A + B)
 	fmt.Println(c + A)
 	//fmt.Println(c + B) error
+	fmt.Println("-----------------------")
+	ConstDefaultValueOmit()
+	fmt.Println("-----------------------")
+	ConstInitialValueFormula()
+}
+
+func ConstDefaultValueOmit() {
+	const (
+		X   = 1
+		Y   // ?
+		Z   // ?
+		STR = "가"
+		STR2
+		STR3 = "나"
+		STR4
+	)
+	fmt.Println("number default value omit: ", X, Y, Z)
+	fmt.Println("string default value omit: ", STR, STR2, STR3, STR4)
+}
+
+func ConstInitialValueFormula() {
+	const (
+		X = 5
+		Y = 10
+		Z = X + Y
+	)
+	fmt.Printf("%d + %d = %d", X, Y, Z)
+	/*error!!!!!!!!!!!
+	const (
+		C = A + B
+		A = 10
+		B = 5
+	)
+	fmt.Printf("%d + %d = %d", A, B, C)
+	*/
 }
