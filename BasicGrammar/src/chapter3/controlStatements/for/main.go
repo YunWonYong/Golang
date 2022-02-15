@@ -13,6 +13,8 @@ func main() {
 	conditionExpressionFor()
 	fmt.Println("=====postStatementAndContinueFor=====")
 	postStatementAndContinueFor()
+	fmt.Println("=====postStatementAndContinueFor2=====")
+	postStatementAndContinueFor2()
 }
 
 func baseForStatement() {
@@ -57,6 +59,18 @@ func postStatementAndContinueFor() {
 	i := 0
 	for ; i < 101; i++ {
 		if i%2 != 0 {
+			continue
+		}
+		fmt.Printf("%d ", i)
+	}
+}
+
+func postStatementAndContinueFor2() {
+	defer fmt.Println()
+	i := 100
+	for ; i > 0; i -= 2 {
+		if i%2 != 0 {
+			fmt.Print("continue!!! ")
 			continue
 		}
 		fmt.Printf("%d ", i)
