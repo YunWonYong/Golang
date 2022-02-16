@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("=====baseSwitchStatement=====")
@@ -11,6 +13,10 @@ func main() {
 	switchCaseTypeCheckAndFallthrough()
 	fmt.Println("=====caseMultiValueFourSeasonsPrint=====")
 	caseMultiValueFourSeasonsPrint()
+	fmt.Println("=====switchExpressionCase=====")
+	switchExpressionCase(5)
+	switchExpressionCase(20)
+	switchExpressionCase(31)
 }
 
 func baseSwitchStatement() {
@@ -148,5 +154,18 @@ func caseMultiValueFourSeasonsPrint() {
 		default:
 			fmt.Printf("%02d월은 없음!!\n", element)
 		}
+	}
+}
+
+func switchExpressionCase(n int) {
+	switch {
+	case n > 0 && n < 11:
+		fmt.Println("n은 1 ~ 10 사이다.")
+	case n > 10 && n < 21:
+		fmt.Println("n은 11 ~ 20 사이다.")
+	case n > 20 && n < 31:
+		fmt.Println("n은 21 ~ 30 사이다.")
+	default:
+		fmt.Println("n은 0보다 작거나 30보다 크다.")
 	}
 }
