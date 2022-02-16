@@ -15,6 +15,12 @@ func main() {
 	postStatementAndContinueFor()
 	fmt.Println("=====postStatementAndContinueFor2=====")
 	postStatementAndContinueFor2()
+	fmt.Println("=====rangeFor=====")
+	rangeFor()
+	fmt.Println("=====rangeFor2=====")
+	rangeFor2()
+	fmt.Println("=====stringRangeFor=====")
+	stringRangeFor()
 }
 
 func baseForStatement() {
@@ -74,5 +80,35 @@ func postStatementAndContinueFor2() {
 			continue
 		}
 		fmt.Printf("%d ", i)
+	}
+}
+
+func rangeFor() {
+	arr := [3]string{"cat", "dog", "bird"}
+	fmt.Printf("arr variable: %#v\n", arr)
+	for index, element := range arr {
+		fmt.Printf("arr index[%d] = %#v\n", index, element)
+	}
+}
+
+func rangeFor2() {
+	arr := [3]string{"cat", "dog", "bird"}
+	fmt.Printf("arr variable: %#v\n", arr)
+	index := 0
+FirstFor:
+	for _ /* 생략 가능 */, element := range arr {
+		for {
+			fmt.Printf("arr index[%d] = %#v\n", index, element)
+			index++
+			continue FirstFor
+		}
+	}
+}
+
+func stringRangeFor() {
+	str := "가a나b다cㄱㄷㅏㅣ"
+
+	for index, at := range str {
+		fmt.Printf("at index[%02d], string[%s] type[%T] unicode[%#v]\n", index, string(at), at, at)
 	}
 }
