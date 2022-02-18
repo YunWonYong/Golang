@@ -5,14 +5,14 @@ import "fmt"
 func main() {
 
 	fmt.Println("=====SimpleSliceExpression()=====")
-	SimpleSliceExpression()
+	simpleSliceExpression()
 	fmt.Println("=====stringSimpleSliceExpression()=====")
 	stringSimpleSliceExpression()
 	fmt.Println("=====fullSliceExpression()=====")
 	fullSliceExpression()
 }
 
-func SimpleSliceExpression() {
+func simpleSliceExpression() {
 	a := []int{1, 2, 3}
 	b := a[0:]
 	fmt.Printf("a variable[%p] equals b variable[%p] = %t \n", &a, &b, &a == &b)
