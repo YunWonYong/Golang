@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	linkedlist "gh/chap13_14/ex1/ex/datastruct/linkedList"
+
+	"github.com/YunWonYong/Golang/datastruct/linkedList"
 )
 
 func main() {
-	ll := linkedlist.New[string]("hello", " world", "!!!")
+	ll := linkedList.New[string]("hello", " world", "!!!")
 
 	for {
 		value, err := ll.Pop()

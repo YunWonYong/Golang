@@ -1,3 +1,3 @@
-module gh/chap13_14/ex1/ex
+module github.com/YunWonYong/Golang
 
 go 1.18

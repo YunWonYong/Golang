@@ -1,4 +1,4 @@
-package linkedlist
+package linkedList
 
 func New[T nodeValueType](initValues ...T) *linkedList[T] {
 	ll := new(linkedList[T])
