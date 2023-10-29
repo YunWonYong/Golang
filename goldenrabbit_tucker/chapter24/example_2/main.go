@@ -7,4 +7,7 @@ func main() {
 	go func() {
 		fmt.Println(" world!!!")
 	}()
+
+	for {
+	}
 }
