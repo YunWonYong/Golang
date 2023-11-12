@@ -1,0 +1,8 @@
+POST http://localhost:3000/student
+
+{
+    "id": "3",
+    "name": "3",
+    "age": 20,
+    "score": 69
+}
