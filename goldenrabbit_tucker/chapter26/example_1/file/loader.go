@@ -53,11 +53,11 @@ func (fl *fileLoader) FindWord(word string) string {
 		go fs.wordScan(word, fl.findWordSender)
 	}
 
-	ctx, cencle := context.WithCancel(context.Background())
+	ctx, cencel := context.WithCancel(context.Background())
 	go fl.findTextCollect(ctx)
 
 	wg.Wait()
-	cencle()
+	cencel()
 
 	return fl.getPrintMsg()
 }
