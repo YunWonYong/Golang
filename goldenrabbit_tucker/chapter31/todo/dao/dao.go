@@ -52,7 +52,7 @@ func Toggle(writer, id string) error {
 	key := getTodoKey(writer)
 	buff, err := conn.HGET(key, id)
 	if err != nil {
-		return err
+		return errors.WithMessagef(err, "writer: %s, id: %s not found todo data.", writer, id)
 	}
 
 	info, err := util.Unmarshal[todo_model.TodoInfo](buff)
