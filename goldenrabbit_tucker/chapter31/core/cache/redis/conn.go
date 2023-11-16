@@ -35,7 +35,7 @@ func (conn *redisConn) HSET(key string, member, buff interface{}) error {
 	if err != nil {
 		err = errors.WithMessagef(err, "key: %s, member: %#v, buff: %#v", key, member, buff)
 	}
-	return nil
+	return err
 }
 
 func (conn *redisConn) HGET(key string, member interface{}) (buff []byte, err error) {
@@ -80,6 +80,8 @@ func (conn *redisConn) do(command string, args ...interface{}) (buff []byte, err
 func CommandByByte(command string, obj interface{}) (buff []byte, err error) {
 	var cbr commandByResult
 	switch command {
+	case PING:
+		fallthrough
 	case HGET:
 		fallthrough
 	case GET:
@@ -93,7 +95,7 @@ func CommandByByte(command string, obj interface{}) (buff []byte, err error) {
 	case SET:
 		cbr = new(setCommandResult)
 	default:
-		return nil, fmt.Errorf("not supported command(%s).", command)
+		return nil, errors.Errorf("not supported command(%s).", command)
 	}
 	return cbr.GetByte(obj)
 }

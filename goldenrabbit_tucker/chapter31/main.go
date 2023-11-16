@@ -8,7 +8,10 @@ import (
 func main() {
 	redisOptions := new(core_redis.RedisConnInitOptions)
 	redisOptions.Host = "localhost"
-	core_redis.RedisPoolInit(redisOptions)
+	if err := core_redis.RedisPoolInit(redisOptions); err != nil {
+		panic(err)
+	}
+
 	if err := core_server.EchoServerStart(":3250"); err != nil {
 		panic(err)
 	}
