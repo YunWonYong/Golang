@@ -3,6 +3,7 @@ package core_router
 import (
 	"fmt"
 	todo_router "gt/chap31/ex/todo/router"
+	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
@@ -26,13 +27,15 @@ func pre() echo.MiddlewareFunc {
 
 			if err != nil {
 				fmt.Println(err.Error())
-			} else {
-				header := c.Response().Header()
-				if header.Get("Content-Type") != "application/json" {
-					c.Response().Header().Set("Content-Type", "application/json")
-				}
+				c.JSON(http.StatusInternalServerError, map[string]interface{}{
+					"err": err.Error(),
+				})
 			}
 
+			header = c.Response().Header()
+			if header.Get("Content-Type") != "application/json" {
+				c.Response().Header().Set("Content-Type", "application/json")
+			}
 			return nil
 		}
 	}
