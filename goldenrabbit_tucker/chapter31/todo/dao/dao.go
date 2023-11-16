@@ -5,6 +5,7 @@ import (
 	core_redis "gt/chap31/ex/core/cache/redis"
 	todo_model "gt/chap31/ex/todo/model"
 	"gt/chap31/ex/util"
+	"time"
 
 	"github.com/pkg/errors"
 )
@@ -54,7 +55,7 @@ func Toggle(writer, id string) error {
 	if err != nil {
 		return errors.WithMessagef(err, "writer: %s, id: %s not found todo data.", writer, id)
 	}
-
+	fmt.Printf("toggle old data: %s\n", buff)
 	info, err := util.Unmarshal[todo_model.TodoInfo](buff)
 
 	if err != nil {
@@ -62,9 +63,9 @@ func Toggle(writer, id string) error {
 	}
 
 	info.Check = !info.Check
-	info.Id = id
-	info.Writer = writer
+	info.UpdateUnix = time.Now().Unix()
 	buff, err = util.Marshal(info)
+	fmt.Printf("toggle new data: %s\n", buff)
 	if err != nil {
 		return err
 	}

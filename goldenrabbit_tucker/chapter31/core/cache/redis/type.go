@@ -57,14 +57,7 @@ type (
 )
 
 func (gc *getCommandResult) GetByte(input interface{}) (output []byte, err error) {
-	str, err := util.InterfaceToString(input)
-	if err != nil {
-		return nil, err
-	}
-
-	gc.Value = str
-
-	return util.Marshal(gc)
+	return util.InterfaceToByteArray(input)
 }
 
 func (sc *setCommandResult) GetByte(input interface{}) (output []byte, err error) {

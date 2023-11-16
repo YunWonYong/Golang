@@ -7,11 +7,12 @@ import (
 
 type (
 	TodoInfo struct {
-		Id        string `json:"id"`
-		Content   string `json:"content"`
-		Check     bool   `json:"check"`
-		Writer    string
-		WriteUnix int64
+		Id         string `json:"id"`
+		Content    string `json:"content"`
+		Check      bool   `json:"check"`
+		Writer     string `json:"writer"`
+		WriteUnix  int64  `json:"writeUnix"`
+		UpdateUnix int64  `json:"updateUnix"`
 	}
 )
 

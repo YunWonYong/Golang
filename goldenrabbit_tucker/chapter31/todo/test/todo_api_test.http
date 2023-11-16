@@ -12,7 +12,7 @@ POST http://localhost:3250/todos
 ###
 
 # 작성자 기준 할일 성공 여부를 변경
-PATCH  http://localhost:3250/todos/123/3a8f1675-1821-47fb-85e3-92ae58cd8a81
+PATCH  http://localhost:3250/todos/123/1ae52d0d-3837-47f6-be8c-cc95c935a351
 
 ###
 # 작성자 기준 할일을 삭제
