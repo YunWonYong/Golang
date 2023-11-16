@@ -54,6 +54,9 @@ func Unmarshal[T interface{}](buff []byte) (*T, error) {
 }
 
 func InterfaceToString(obj interface{}) (string, error) {
+	if obj == nil {
+		return "", errors.New("input param is nil.")
+	}
 	str, ok := obj.(string)
 	if ok {
 		return str, nil

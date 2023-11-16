@@ -68,6 +68,8 @@ func (conn *redisConn) do(command string, args ...interface{}) (buff []byte, err
 		return []byte{}, nil
 	} else if err != nil {
 		return nil, err
+	} else if reply == nil {
+		return []byte{}, errors.Errorf("result nil.")
 	}
 
 	buff, err = CommandByByte(command, reply)
