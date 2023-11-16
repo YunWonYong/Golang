@@ -82,6 +82,13 @@ func Delete(writer, id string) error {
 	return conn.HDEL(key, id)
 }
 
+func Truncate(writer string) error {
+	conn := core_redis.GetConn()
+	defer conn.Close()
+	key := getTodoKey(writer)
+	return conn.DEL(key)
+}
+
 func getTodoKey(writer string) string {
 	return fmt.Sprintf("%s:%s", TODO_KEY, writer)
 }

@@ -67,3 +67,15 @@ func DestroyHandler(c echo.Context) error {
 
 	return c.String(http.StatusOK, "ok")
 }
+
+func DestroyAllHandler(c echo.Context) error {
+	writer := c.Param("writer")
+	if !util.RequiredValueValidation(writer) {
+		return errors.New("writer required")
+	}
+
+	if err := todo_dao.Truncate(writer); err != nil {
+		return errors.WithMessage(err, "Truncate fail.")
+	}
+	return c.String(http.StatusOK, "ok")
+}

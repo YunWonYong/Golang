@@ -8,9 +8,11 @@ import (
 )
 
 const (
+	DEL  string = "DEL"
+	PING string = "PING"
+
 	SET     string = "SET"
 	GET     string = "GET"
-	PING    string = "PING"
 	HSET    string = "HSET"
 	HDEL    string = "HDEL"
 	HGET    string = "HGET"
@@ -19,6 +21,11 @@ const (
 
 func (conn *redisConn) Ping(pingMsg string) error {
 	_, err := conn.do("PING", pingMsg)
+	return err
+}
+
+func (conn *redisConn) DEL(key string) error {
+	_, err := conn.do(DEL, key)
 	return err
 }
 
@@ -93,6 +100,8 @@ func CommandByByte(command string, obj interface{}) (buff []byte, err error) {
 	case HSET:
 		fallthrough
 	case HDEL:
+		fallthrough
+	case DEL:
 		fallthrough
 	case SET:
 		cbr = new(setCommandResult)

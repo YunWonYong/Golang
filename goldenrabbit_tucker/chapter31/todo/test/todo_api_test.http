@@ -15,6 +15,11 @@ POST http://localhost:3250/todos
 PATCH  http://localhost:3250/todos/123/1ae52d0d-3837-47f6-be8c-cc95c935a351
 
 ###
-# 작성자 기준 할일을 삭제
+# 작성자 기준 할일을 하나 삭제
 DELETE  http://localhost:3250/todos/123/dd6a01f0-5b9a-422e-b026-dd21bfe222c7
+
+
+###
+# 작성자 기준 할일을 전체 삭제
+DELETE  http://localhost:3250/todos/123
 

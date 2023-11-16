@@ -12,4 +12,5 @@ func Load(e *echo.Group) {
 	e.PUT("/:writer/:id", todo_handler.ModifyHandler)
 	e.PATCH("/:writer/:id", todo_handler.ClearFlagToggleHandler)
 	e.DELETE("/:writer/:id", todo_handler.DestroyHandler)
+	e.DELETE("/:writer", todo_handler.DestroyAllHandler)
 }
