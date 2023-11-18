@@ -18,7 +18,13 @@ func FindAllHandler(c echo.Context) error {
 		c.JSON(http.StatusInternalServerError, "todolist data not found.")
 		return err
 	}
-	return c.JSON(http.StatusOK, string(buff))
+
+	info, err := util.Unmarshal[map[string]interface{}](buff)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, "todolist Unmarshal fail.")
+		return err
+	}
+	return c.JSON(http.StatusOK, info)
 }
 
 func RegistHandler(c echo.Context) error {

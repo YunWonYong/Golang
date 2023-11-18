@@ -37,9 +37,7 @@ type (
 		GetByte(input interface{}) (output []byte, err error)
 	}
 
-	getCommandResult struct {
-		Value string `json:"value"`
-	}
+	getCommandResult []byte
 
 	setCommandResult struct {
 		AffectedCount int64 `json:"affectedCount"`

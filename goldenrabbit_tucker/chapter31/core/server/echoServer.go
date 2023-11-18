@@ -21,7 +21,7 @@ func getCorsMiddleware() echo.MiddlewareFunc {
 func getCorsConfig() echoMiddleware.CORSConfig {
 	return echoMiddleware.CORSConfig{
 		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{echo.GET, echo.PUT, echo.POST, echo.DELETE, echo.OPTIONS},
+		AllowMethods:     []string{echo.GET, echo.PUT, echo.POST, echo.DELETE, echo.PATCH, echo.OPTIONS},
 		AllowHeaders:     []string{echo.HeaderAccept, echo.HeaderContentType},
 		AllowCredentials: true,
 		MaxAge:           60 * 10,
